@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { moviesApi } from "../../api";
-import MoviesComponent from "./MoviesComponent";
+import { preMoviesApi } from "../../api";
+import PreMoviesComponent from "./PreMoviesComponent";
 
-const MoviesContainer = () => {
+const PreMoviesContainer = () => {
   const [state, setState] = useState({
     movieList: null,
     error: null,
@@ -15,8 +15,8 @@ const MoviesContainer = () => {
 
       try {
         const {
-          data: { nowmovie_lst: movieList },
-        } = await moviesApi.movieList();
+          data: { premovie_lst: movieList },
+        } = await preMoviesApi.premovieList();
 
         setState({
           movieList: movieList,
@@ -37,8 +37,8 @@ const MoviesContainer = () => {
   const { movieList, error, loading } = state;
 
   return (
-    <MoviesComponent movieList={movieList} error={error} loading={loading} />
+    <PreMoviesComponent movieList={movieList} error={error} loading={loading} />
   );
 };
 
-export default MoviesContainer;
+export default PreMoviesContainer;

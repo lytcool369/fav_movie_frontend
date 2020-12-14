@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const LikeDiv = styled.div`
   display: flex;
-  top: 15px;
+  top: 25px;
   left: 15px;
   justify-content: flex-end;
   font-size: 30px;
@@ -99,13 +99,19 @@ const Poster = ({
   actors,
   rank,
   year,
-  isRelease = false,
+  isNowMovie,
+  bookmarkCheck,
+  _handleBookMark,
 }) => (
   <Container>
     <LikeDiv>
-      <BsBookmarkFill color="rgb(229, 225, 255)" />
+      <BsBookmarkFill
+        color={bookmarkCheck ? "red" : "rgb(229, 225, 255)"}
+        onClick={() => _handleBookMark(id)}
+        cursor="grab"
+      />
     </LikeDiv>
-    <Link to={isRelease ? `/movie/${id}` : `/show/${id}`}>
+    <Link to={`/show/${id}`}>
       <ImageContainer>
         <Image
           bgUrl={imageUrl ? imageUrl : require("../assets/noPosterSmall.png")}
@@ -118,12 +124,14 @@ const Poster = ({
             }
           })}
         </ActorDiv>
-        <Rating>
-          <span role="img" aria-label="rating">
-            ⭐️
-          </span>
-          {rank} / 10
-        </Rating>
+        {isNowMovie && (
+          <Rating>
+            <span role="img" aria-label="rating">
+              ⭐️
+            </span>
+            {rank} / 10
+          </Rating>
+        )}
       </ImageContainer>
       <Title>
         {title.length > 15 ? `${title.substring(0, 15)}...` : title}

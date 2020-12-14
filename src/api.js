@@ -5,6 +5,14 @@ const api = axios.create({
 });
 
 export const moviesApi = {
-  movieList: () => api.get("/movie/list"),
-  favorite: () => api.get("/movie/user_favorite"),
+  movieList: () => api.get("/movie/movie_list"),
+};
+
+export const preMoviesApi = {
+  premovieList: () => api.get("/movie/premovie_list"),
+};
+
+export const favMoviesApi = {
+  favorite: (id) => api.get(`/movie/bookmark/${id}`),
+  favList: () => api.get("/movie/favmovie_list"),
 };

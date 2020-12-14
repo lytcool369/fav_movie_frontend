@@ -1,3 +1,3 @@
-import FavoriteContainer from "./FavoriteContainer";
+import FavMoviesContainer from "./FavMoviesContainer";
 
-export default FavoriteContainer;
+export default FavMoviesContainer;

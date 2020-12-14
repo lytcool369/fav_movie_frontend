@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { moviesApi } from "../../api";
-import MoviesComponent from "./MoviesComponent";
+import { favMoviesApi } from "../../api";
+import FavMoviesComponent from "./FavMoviesComponent";
 
-const MoviesContainer = () => {
+const FavMoviesContainer = () => {
   const [state, setState] = useState({
     movieList: null,
     error: null,
@@ -15,8 +15,8 @@ const MoviesContainer = () => {
 
       try {
         const {
-          data: { nowmovie_lst: movieList },
-        } = await moviesApi.movieList();
+          data: { fav_movie_lst: movieList },
+        } = await favMoviesApi.favList();
 
         setState({
           movieList: movieList,
@@ -37,8 +37,8 @@ const MoviesContainer = () => {
   const { movieList, error, loading } = state;
 
   return (
-    <MoviesComponent movieList={movieList} error={error} loading={loading} />
+    <FavMoviesComponent movieList={movieList} error={error} loading={loading} />
   );
 };
 
-export default MoviesContainer;
+export default FavMoviesContainer;
