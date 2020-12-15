@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { scrapping } from "../../api";
+import HomePresenter from "./HomePresenter";
 
 const HomeContainer = ({ setHomeLoading }) => {
   const [state, setState] = useState({
@@ -9,6 +10,7 @@ const HomeContainer = ({ setHomeLoading }) => {
 
   useEffect(() => {
     const process = async () => {
+      setHomeLoading(true);
       setState({ error: null, loading: true });
 
       try {
@@ -17,15 +19,15 @@ const HomeContainer = ({ setHomeLoading }) => {
       } catch (error) {
         setState({ error: "크롤링에 실패하였습니다.", loading: false });
       } finally {
-        setState({ error: null, loading: false });
         setHomeLoading(false);
+        setState({ error: null, loading: false });
       }
     };
 
     process();
   }, []);
 
-  return <div></div>;
+  return <HomePresenter />;
 };
 
 export default HomeContainer;

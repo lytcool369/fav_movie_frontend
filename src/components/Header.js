@@ -46,6 +46,7 @@ const StyledLink = styled(Link)`
 //   history: 라우터가 이동한 경로 정보
 export default withRouter(({ location: { pathname }, homeLoading }) => (
   <>
+    {homeLoading && <Header>불러오는 중입니다...</Header>}
     {!homeLoading && (
       <Header>
         <List>
