@@ -44,21 +44,25 @@ const StyledLink = styled(Link)`
 //   match: 파라미터 관련 정보
 //   location: 경로 관련 정보
 //   history: 라우터가 이동한 경로 정보
-export default withRouter(({ location: { pathname } }) => (
-  <Header>
-    <List>
-      <Item current={pathname === "/"}>
-        <StyledLink to="/">홈</StyledLink>
-      </Item>
-      <Item current={pathname === "/movies"}>
-        <StyledLink to="/movies">영화 상영작</StyledLink>
-      </Item>
-      <Item current={pathname === "/premovies"}>
-        <StyledLink to="/premovies">개봉 예정작</StyledLink>
-      </Item>
-      <Item current={pathname === "/favorite"}>
-        <StyledLink to="/favorite">내가 좋아하는 영화</StyledLink>
-      </Item>
-    </List>
-  </Header>
+export default withRouter(({ location: { pathname }, homeLoading }) => (
+  <>
+    {!homeLoading && (
+      <Header>
+        <List>
+          <Item current={pathname === "/"}>
+            <StyledLink to="/">홈</StyledLink>
+          </Item>
+          <Item current={pathname === "/movies"}>
+            <StyledLink to="/movies">영화 상영작</StyledLink>
+          </Item>
+          <Item current={pathname === "/premovies"}>
+            <StyledLink to="/premovies">개봉 예정작</StyledLink>
+          </Item>
+          <Item current={pathname === "/favorite"}>
+            <StyledLink to="/favorite">내가 좋아하는 영화</StyledLink>
+          </Item>
+        </List>
+      </Header>
+    )}
+  </>
 ));

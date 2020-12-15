@@ -4,6 +4,11 @@ const api = axios.create({
   baseURL: "http://localhost:5000",
 });
 
+export const scrapping = {
+  scrapNowMovie: () => api.get("/movie/now_list"),
+  scrapPreMovie: () => api.get("/movie/pre_list"),
+};
+
 export const moviesApi = {
   movieList: () => api.get("/movie/movie_list"),
 };
