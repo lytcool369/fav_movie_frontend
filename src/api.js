@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://18.117.107.238:5000",
+  baseURL: "http://18.119.159.53:5000",
 });
 
 export const scrapping = {
